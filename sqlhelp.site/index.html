@@ -178,284 +178,284 @@
         
             <hr>
 <!-- Read query -->
-            <div class="container">
-              <div class="row">
-              <h2>Read</h2>
-                <div class="col-lg-6">
-                  <h2>SQL</h2>
-                  <pre><code>SELECT name, address, city, state, website FROM sqlsocial_producer;
-                  SELECT address, city, state FROM sqlsocial_producer WHERE name = 'Producer 1';
-                  SELECT stage_name FROM sqlsocial_artist;
-                  SELECT genre FROM sqlsocial_artist WHERE name = 'Don';</code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Django ORM</h2>
-                  <pre><code></code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-               </div>
-              </div>
-        
-              <hr>
+        <div class="container">
+          <div class="row">
+          <h2>Read</h2>
+            <div class="col-lg-6">
+              <h2>SQL</h2>
+              <pre><code>SELECT name, address, city, state, website FROM sqlsocial_producer;
+              SELECT address, city, state FROM sqlsocial_producer WHERE name = 'Producer 1';
+              SELECT stage_name FROM sqlsocial_artist;
+              SELECT genre FROM sqlsocial_artist WHERE name = 'Don';</code></pre>
+              <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+            </div>
+            <div class="col-lg-6">
+              <h2>Django ORM</h2>
+              <pre><code></code></pre>
+              <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+           </div>
+          </div>
+    
+          <hr>
               
   <!-- Update query -->
-              <div class="container">
-                <div class="row">
-                <h2>Update</h2>
-                  <div class="col-lg-6">
-                    <h2>SQL</h2>
-                    <pre><code>UPDATE sqlsocial_producer SET name = 'Ricky Rangles' WHERE name = 'Producer 1';
-                    UPDATE sqlsocial_artist SET genre = 'Rock' WHERE name = 'Bob Dylan';</code></pre>
-                    <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-                  </div>
-                  <div class="col-lg-6">
-                    <h2>Django ORM</h2>
-                    <pre><code></code></pre>
-                    <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-                 </div>
-                </div>
-          
-                <hr>
+      <div class="container">
+        <div class="row">
+        <h2>Update</h2>
+          <div class="col-lg-6">
+            <h2>SQL</h2>
+            <pre><code>UPDATE sqlsocial_producer SET name = 'Ricky Rangles' WHERE name = 'Producer 1';
+            UPDATE sqlsocial_artist SET genre = 'Rock' WHERE name = 'Bob Dylan';</code></pre>
+            <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+          </div>
+          <div class="col-lg-6">
+            <h2>Django ORM</h2>
+            <pre><code></code></pre>
+            <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+         </div>
+        </div>
+  
+        <hr>
                 
 <!-- Delete query -->
-            <div class="container">
-              <div class="row">
-              <h2>Delete</h2>
-                <div class="col-lg-6">
-                  <h2>SQL</h2>
-                  <pre><code>DELETE FROM sqlsocial_producer WHERE name = 'Ricky Rangles';
-                  DELETE FROM sqlsocial_artist WHERE genre = 'Rock';</code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Django ORM</h2>
-                  <pre><code></code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-               </div>
-              </div>
-        
-              <hr>
+        <div class="container">
+          <div class="row">
+          <h2>Delete</h2>
+            <div class="col-lg-6">
+              <h2>SQL</h2>
+              <pre><code>DELETE FROM sqlsocial_producer WHERE name = 'Ricky Rangles';
+              DELETE FROM sqlsocial_artist WHERE genre = 'Rock';</code></pre>
+              <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+            </div>
+            <div class="col-lg-6">
+              <h2>Django ORM</h2>
+              <pre><code></code></pre>
+              <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+           </div>
+          </div>
+    
+          <hr>
               
 <!-- Fixtures query -->
-            <div class="container">
-              <div class="row">
-              <h2>Fixtures</h2>
-                <div class="col-lg-6">
-                  <h2>SQL</h2>
-                  <pre><code># Artist table fixture
-                  B.I.G.:
-                      name: Christopher George Latore Wallace
-                      stage_name: Notorious B.I.G.
-                      genre: Hip hop
-                  
-                  Johnny Cash:
-                      name: John R. Cash
-                      stage_name: Johnny Cash
-                      genre: Country
-                  
-                  Elvis:
-                      name: Elvis Aaron Presley
-                      stage_name: Elvis
-                      genre: Rock and Roll</code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Django ORM</h2>
-                  <pre><code></code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-               </div>
-              </div>
-        
-              <hr>
+    <div class="container">
+      <div class="row">
+      <h2>Fixtures</h2>
+        <div class="col-lg-6">
+          <h2>SQL</h2>
+          <pre><code># Artist table fixture
+          B.I.G.:
+              name: Christopher George Latore Wallace
+              stage_name: Notorious B.I.G.
+              genre: Hip hop
+          
+          Johnny Cash:
+              name: John R. Cash
+              stage_name: Johnny Cash
+              genre: Country
+          
+          Elvis:
+              name: Elvis Aaron Presley
+              stage_name: Elvis
+              genre: Rock and Roll</code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-6">
+          <h2>Django ORM</h2>
+          <pre><code></code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr>
               
 <!-- Iterating over results -->
-            <div class="container">
-              <div class="row">
-              <h2>Iterating over results</h2>
-                <div class="col-lg-6">
-                  <h2>SQL</h2>
-                  <pre><code>DECLARE artistCursor CURSOR FOR SELECT name, genre FROM sqlsocial_artist;
-                  DECLARE @name VARCHAR(256);
-                  DECLARE @genre VARCHAR(256);
-                  OPEN artistCursor;
-                  FETCH NEXT FROM artistCursor INTO @name, @genre;
-                  WHILE @@FETCH_STATUS = 0
-                  BEGIN
-                      IF @genre = 'Hip Hop'
-                          DELETE FROM sqlsocial_artist WHERE name LIKE @name;
-                  
-                      FETCH NEXT FROM artistCursor;
-                  END</code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Django ORM</h2>
-                  <pre><code></code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-               </div>
-              </div>
-        
-              <hr>
+    <div class="container">
+      <div class="row">
+      <h2>Iterating over results</h2>
+        <div class="col-lg-6">
+          <h2>SQL</h2>
+          <pre><code>DECLARE artistCursor CURSOR FOR SELECT name, genre FROM sqlsocial_artist;
+          DECLARE @name VARCHAR(256);
+          DECLARE @genre VARCHAR(256);
+          OPEN artistCursor;
+          FETCH NEXT FROM artistCursor INTO @name, @genre;
+          WHILE @@FETCH_STATUS = 0
+          BEGIN
+              IF @genre = 'Hip Hop'
+                  DELETE FROM sqlsocial_artist WHERE name LIKE @name;
+          
+              FETCH NEXT FROM artistCursor;
+          END</code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-6">
+          <h2>Django ORM</h2>
+          <pre><code></code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr>
               
 <!-- Fixtures query -->
-            <div class="container">
-              <div class="row">
-              <h2>Fixtures</h2>
-                <div class="col-lg-6">
-                  <h2>SQL</h2>
-                  <pre><code># Artist table fixture
-                  B.I.G.:
-                      name: Christopher George Latore Wallace
-                      stage_name: Notorious B.I.G.
-                      genre: Hip hop
-                  
-                  Johnny Cash:
-                      name: John R. Cash
-                      stage_name: Johnny Cash
-                      genre: Country
-                  
-                  Elvis:
-                      name: Elvis Aaron Presley
-                      stage_name: Elvis
-                      genre: Rock and Roll</code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Django ORM</h2>
-                  <pre><code></code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-               </div>
-              </div>
-        
-              <hr>
+    <div class="container">
+      <div class="row">
+      <h2>Fixtures</h2>
+        <div class="col-lg-6">
+          <h2>SQL</h2>
+          <pre><code># Artist table fixture
+          B.I.G.:
+              name: Christopher George Latore Wallace
+              stage_name: Notorious B.I.G.
+              genre: Hip hop
+          
+          Johnny Cash:
+              name: John R. Cash
+              stage_name: Johnny Cash
+              genre: Country
+          
+          Elvis:
+              name: Elvis Aaron Presley
+              stage_name: Elvis
+              genre: Rock and Roll</code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-6">
+          <h2>Django ORM</h2>
+          <pre><code></code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr>
               
 <!-- Fixtures query -->
-            <div class="container">
-              <div class="row">
-              <h2>Fixtures</h2>
-                <div class="col-lg-6">
-                  <h2>SQL</h2>
-                  <pre><code># Artist table fixture
-                  B.I.G.:
-                      name: Christopher George Latore Wallace
-                      stage_name: Notorious B.I.G.
-                      genre: Hip hop
-                  
-                  Johnny Cash:
-                      name: John R. Cash
-                      stage_name: Johnny Cash
-                      genre: Country
-                  
-                  Elvis:
-                      name: Elvis Aaron Presley
-                      stage_name: Elvis
-                      genre: Rock and Roll</code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Django ORM</h2>
-                  <pre><code></code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-               </div>
-              </div>
-        
-              <hr>
+    <div class="container">
+      <div class="row">
+      <h2>Fixtures</h2>
+        <div class="col-lg-6">
+          <h2>SQL</h2>
+          <pre><code># Artist table fixture
+          B.I.G.:
+              name: Christopher George Latore Wallace
+              stage_name: Notorious B.I.G.
+              genre: Hip hop
+          
+          Johnny Cash:
+              name: John R. Cash
+              stage_name: Johnny Cash
+              genre: Country
+          
+          Elvis:
+              name: Elvis Aaron Presley
+              stage_name: Elvis
+              genre: Rock and Roll</code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-6">
+          <h2>Django ORM</h2>
+          <pre><code></code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr>
               
 <!-- Fixtures query -->
-            <div class="container">
-              <div class="row">
-              <h2>Fixtures</h2>
-                <div class="col-lg-6">
-                  <h2>SQL</h2>
-                  <pre><code># Artist table fixture
-                  B.I.G.:
-                      name: Christopher George Latore Wallace
-                      stage_name: Notorious B.I.G.
-                      genre: Hip hop
-                  
-                  Johnny Cash:
-                      name: John R. Cash
-                      stage_name: Johnny Cash
-                      genre: Country
-                  
-                  Elvis:
-                      name: Elvis Aaron Presley
-                      stage_name: Elvis
-                      genre: Rock and Roll</code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Django ORM</h2>
-                  <pre><code></code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-               </div>
-              </div>
-        
-              <hr>
+    <div class="container">
+      <div class="row">
+      <h2>Fixtures</h2>
+        <div class="col-lg-6">
+          <h2>SQL</h2>
+          <pre><code># Artist table fixture
+          B.I.G.:
+              name: Christopher George Latore Wallace
+              stage_name: Notorious B.I.G.
+              genre: Hip hop
+          
+          Johnny Cash:
+              name: John R. Cash
+              stage_name: Johnny Cash
+              genre: Country
+          
+          Elvis:
+              name: Elvis Aaron Presley
+              stage_name: Elvis
+              genre: Rock and Roll</code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-6">
+          <h2>Django ORM</h2>
+          <pre><code></code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr>
               
 <!-- Fixtures query -->
-            <div class="container">
-              <div class="row">
-              <h2>Fixtures</h2>
-                <div class="col-lg-6">
-                  <h2>SQL</h2>
-                  <pre><code># Artist table fixture
-                  B.I.G.:
-                      name: Christopher George Latore Wallace
-                      stage_name: Notorious B.I.G.
-                      genre: Hip hop
-                  
-                  Johnny Cash:
-                      name: John R. Cash
-                      stage_name: Johnny Cash
-                      genre: Country
-                  
-                  Elvis:
-                      name: Elvis Aaron Presley
-                      stage_name: Elvis
-                      genre: Rock and Roll</code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Django ORM</h2>
-                  <pre><code></code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-               </div>
-              </div>
-        
-              <hr>
+    <div class="container">
+      <div class="row">
+      <h2>Fixtures</h2>
+        <div class="col-lg-6">
+          <h2>SQL</h2>
+          <pre><code># Artist table fixture
+          B.I.G.:
+              name: Christopher George Latore Wallace
+              stage_name: Notorious B.I.G.
+              genre: Hip hop
+          
+          Johnny Cash:
+              name: John R. Cash
+              stage_name: Johnny Cash
+              genre: Country
+          
+          Elvis:
+              name: Elvis Aaron Presley
+              stage_name: Elvis
+              genre: Rock and Roll</code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-6">
+          <h2>Django ORM</h2>
+          <pre><code></code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr>
               
 <!-- Fixtures query -->
-            <div class="container">
-              <div class="row">
-              <h2>Fixtures</h2>
-                <div class="col-lg-6">
-                  <h2>SQL</h2>
-                  <pre><code># Artist table fixture
-                  B.I.G.:
-                      name: Christopher George Latore Wallace
-                      stage_name: Notorious B.I.G.
-                      genre: Hip hop
-                  
-                  Johnny Cash:
-                      name: John R. Cash
-                      stage_name: Johnny Cash
-                      genre: Country
-                  
-                  Elvis:
-                      name: Elvis Aaron Presley
-                      stage_name: Elvis
-                      genre: Rock and Roll</code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Django ORM</h2>
-                  <pre><code></code></pre>
-                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-               </div>
-              </div>
-        
-              <hr>
+    <div class="container">
+      <div class="row">
+      <h2>Fixtures</h2>
+        <div class="col-lg-6">
+          <h2>SQL</h2>
+          <pre><code># Artist table fixture
+          B.I.G.:
+              name: Christopher George Latore Wallace
+              stage_name: Notorious B.I.G.
+              genre: Hip hop
+          
+          Johnny Cash:
+              name: John R. Cash
+              stage_name: Johnny Cash
+              genre: Country
+          
+          Elvis:
+              name: Elvis Aaron Presley
+              stage_name: Elvis
+              genre: Rock and Roll</code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-6">
+          <h2>Django ORM</h2>
+          <pre><code></code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr>
 
       <footer>
         <p>&copy; Company 2013</p>
