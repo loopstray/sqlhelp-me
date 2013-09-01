@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Compare ORM and SQL Queries</h1>
+        <p>Quickly spot the differences between common queries.</p>
+      </div>
+    </div>
+    
+    <div class="container">
+    	<div class="row">
+    		<div class="col-lg-12">
+    		<h2>Scenario</h2>
+    		<p><b>Create a model that maps out a relationship between an artist, album, and producer.</b></p>
+    		
+    		<li>Artist - name, stage name, genre</li>
+    		<li>Producer - name, street address, city, state, website</li>
+    		<li>Album - title, artists, producer, release date</li>
+    		<li>An album can have many artists, but only one producer</li>
+    		</div>
+    	</div>
+    </div>
+    
+    <hr>
+
+    <div class="container">
+      <h2>Create the tables (using a SQLite database)</h2>
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>SQL</h2>
+          <pre><code>CREATE TABLE "socialsql_producer" (
+              "id" integer NOT NULL PRIMARY KEY,
+              "name" varchar(30) NOT NULL,
+              "address" varchar(50) NOT NULL,
+              "city" varchar(60) NOT NULL,
+              "state" varchar(3) NOT NULL,
+              "website" varchar(200) NOT NULL
+          )
+          ;
+          CREATE TABLE "socialsql_artist" (
+              "id" integer NOT NULL PRIMARY KEY,
+              "name" varchar(30) NOT NULL,
+              "stage_name" varchar(30) NOT NULL,
+              "genre" varchar(30) NOT NULL
+          )
+          ;
+          CREATE TABLE "socialsql_album_artists" (
+              "id" integer NOT NULL PRIMARY KEY,
+              "album_id" integer NOT NULL,
+              "artist_id" integer NOT NULL REFERENCES "socialsql_artist" ("id"),
+              UNIQUE ("album_id", "artist_id")
+          )
+          ;
+          CREATE TABLE "socialsql_album" (
+              "id" integer NOT NULL PRIMARY KEY,
+              "title" varchar(100) NOT NULL,
+              "producer_id" integer NOT NULL REFERENCES "socialsql_producer" ("id"),
+              "release_date" date NOT NULL
+          )
+          ;
+          
+          COMMIT;</code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-6">
+          <h2>Django ORM</h2>
+          <pre><code>class Producer(models.Model):
+              name = models.CharField(max_length=30)
+              address = models.CharField(max_length=50)
+              city = models.CharField(max_length=60)
+              state = models.CharField(max_length=2)
+              website = models.URLField()
+          
+          class Artist(models.Model):
+              name = models.CharField(max_length=30)
+              stage_name = models.CharField(max_length=30)
+              genre = models.CharField(max_length=30)
+          
+          class Album(models.Model):
+              title = models.CharField(max_length=100)
+              artists = models.ManyToManyField(Artist)
+              producer = models.ForeignKey(Producer)
+              release_date = models.DateField()</code></pre>
+          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+       </div>
+      </div>
+
+
+      
+      <hr>
+  
+<!-- Create query -->
+      <div class="container">
+        <div class="row">
+        <h2>Create</h2>
+          <div class="col-lg-6">
+            <h2>SQL</h2>
+            <pre><code>INSERT INTO socialsql_producer VALUES (1, 'Producer 1', '28 Django Drive', 'Lawrence', 'KS', 'http://www.producer1.com/');
+            INSERT INTO socialsql_producer VALUES (2, 'Producer 2', '304 Pine Street', 'San Francisco', 'CA', 'http://www.producer2.com/');
+            INSERT INTO socialsql_artist VALUES (1, 'Don', 'Donnie Angel', 'Blues');
+            INSERT INTO socialsql_artist VALUES (2, 'Frank Zappos', 'Meta', 'Rock');
+            INSERT INTO socialsql_artist VALUES(3, 'Bob Dylan', 'Bob Dylan', 'Folk');</code></pre>
+            <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+          </div>
+          <div class="col-lg-6">
+            <h2>Django ORM</h2>
+            <pre><code>$ python manage.py shell
+            >>> from socialsql.models import *
+            >>> p1 = Producer(name='Producer 1', address='28 Django Drive', city='Lawrence', state='KS', website='http://www.producer1.com/')
+            >>> p1.save()
+            >>> p2 = Producer(name='Producer 2', address='304 Pine Street', city='San Francisco', state='CA', website='http://www.producer2.com/')
+            >>> p2.save()
+            >>> a1 = Artist(name='Don',stage_name='Donnie Angel',genre='Blues')
+            >>> a1.save()
+            >>> a2 = Artist(name='Frank Zappos',stage_name='Meta',genre='Rock')
+            >>> a2.save()
+            >>> a1 = Artist(name='',stage_name='',genre='')</code></pre>
+            <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+         </div>
+        </div>
+  
+
+        
+            <hr>
+<!-- Read query -->
+            <div class="container">
+              <div class="row">
+              <h2>Read</h2>
+                <div class="col-lg-6">
+                  <h2>SQL</h2>
+                  <pre><code>SELECT name, address, city, state, website FROM sqlsocial_producer;
+                  SELECT address, city, state FROM sqlsocial_producer WHERE name = 'Producer 1';
+                  SELECT stage_name FROM sqlsocial_artist;
+                  SELECT genre FROM sqlsocial_artist WHERE name = 'Don';</code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+                </div>
+                <div class="col-lg-6">
+                  <h2>Django ORM</h2>
+                  <pre><code></code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+               </div>
+              </div>
+        
+              <hr>
+              
+  <!-- Update query -->
+              <div class="container">
+                <div class="row">
+                <h2>Update</h2>
+                  <div class="col-lg-6">
+                    <h2>SQL</h2>
+                    <pre><code>UPDATE sqlsocial_producer SET name = 'Ricky Rangles' WHERE name = 'Producer 1';
+                    UPDATE sqlsocial_artist SET genre = 'Rock' WHERE name = 'Bob Dylan';</code></pre>
+                    <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+                  </div>
+                  <div class="col-lg-6">
+                    <h2>Django ORM</h2>
+                    <pre><code></code></pre>
+                    <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+                 </div>
+                </div>
+          
+                <hr>
+                
+<!-- Delete query -->
+            <div class="container">
+              <div class="row">
+              <h2>Delete</h2>
+                <div class="col-lg-6">
+                  <h2>SQL</h2>
+                  <pre><code>DELETE FROM sqlsocial_producer WHERE name = 'Ricky Rangles';
+                  DELETE FROM sqlsocial_artist WHERE genre = 'Rock';</code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+                </div>
+                <div class="col-lg-6">
+                  <h2>Django ORM</h2>
+                  <pre><code></code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+               </div>
+              </div>
+        
+              <hr>
+              
+<!-- Fixtures query -->
+            <div class="container">
+              <div class="row">
+              <h2>Fixtures</h2>
+                <div class="col-lg-6">
+                  <h2>SQL</h2>
+                  <pre><code># Artist table fixture
+                  B.I.G.:
+                      name: Christopher George Latore Wallace
+                      stage_name: Notorious B.I.G.
+                      genre: Hip hop
+                  
+                  Johnny Cash:
+                      name: John R. Cash
+                      stage_name: Johnny Cash
+                      genre: Country
+                  
+                  Elvis:
+                      name: Elvis Aaron Presley
+                      stage_name: Elvis
+                      genre: Rock and Roll</code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+                </div>
+                <div class="col-lg-6">
+                  <h2>Django ORM</h2>
+                  <pre><code></code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+               </div>
+              </div>
+        
+              <hr>
+              
+<!-- Iterating over results -->
+            <div class="container">
+              <div class="row">
+              <h2>Iterating over results</h2>
+                <div class="col-lg-6">
+                  <h2>SQL</h2>
+                  <pre><code>DECLARE artistCursor CURSOR FOR SELECT name, genre FROM sqlsocial_artist;
+                  DECLARE @name VARCHAR(256);
+                  DECLARE @genre VARCHAR(256);
+                  OPEN artistCursor;
+                  FETCH NEXT FROM artistCursor INTO @name, @genre;
+                  WHILE @@FETCH_STATUS = 0
+                  BEGIN
+                      IF @genre = 'Hip Hop'
+                          DELETE FROM sqlsocial_artist WHERE name LIKE @name;
+                  
+                      FETCH NEXT FROM artistCursor;
+                  END</code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+                </div>
+                <div class="col-lg-6">
+                  <h2>Django ORM</h2>
+                  <pre><code></code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+               </div>
+              </div>
+        
+              <hr>
+              
+<!-- Fixtures query -->
+            <div class="container">
+              <div class="row">
+              <h2>Fixtures</h2>
+                <div class="col-lg-6">
+                  <h2>SQL</h2>
+                  <pre><code># Artist table fixture
+                  B.I.G.:
+                      name: Christopher George Latore Wallace
+                      stage_name: Notorious B.I.G.
+                      genre: Hip hop
+                  
+                  Johnny Cash:
+                      name: John R. Cash
+                      stage_name: Johnny Cash
+                      genre: Country
+                  
+                  Elvis:
+                      name: Elvis Aaron Presley
+                      stage_name: Elvis
+                      genre: Rock and Roll</code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+                </div>
+                <div class="col-lg-6">
+                  <h2>Django ORM</h2>
+                  <pre><code></code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+               </div>
+              </div>
+        
+              <hr>
+              
+<!-- Fixtures query -->
+            <div class="container">
+              <div class="row">
+              <h2>Fixtures</h2>
+                <div class="col-lg-6">
+                  <h2>SQL</h2>
+                  <pre><code># Artist table fixture
+                  B.I.G.:
+                      name: Christopher George Latore Wallace
+                      stage_name: Notorious B.I.G.
+                      genre: Hip hop
+                  
+                  Johnny Cash:
+                      name: John R. Cash
+                      stage_name: Johnny Cash
+                      genre: Country
+                  
+                  Elvis:
+                      name: Elvis Aaron Presley
+                      stage_name: Elvis
+                      genre: Rock and Roll</code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+                </div>
+                <div class="col-lg-6">
+                  <h2>Django ORM</h2>
+                  <pre><code></code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+               </div>
+              </div>
+        
+              <hr>
+              
+<!-- Fixtures query -->
+            <div class="container">
+              <div class="row">
+              <h2>Fixtures</h2>
+                <div class="col-lg-6">
+                  <h2>SQL</h2>
+                  <pre><code># Artist table fixture
+                  B.I.G.:
+                      name: Christopher George Latore Wallace
+                      stage_name: Notorious B.I.G.
+                      genre: Hip hop
+                  
+                  Johnny Cash:
+                      name: John R. Cash
+                      stage_name: Johnny Cash
+                      genre: Country
+                  
+                  Elvis:
+                      name: Elvis Aaron Presley
+                      stage_name: Elvis
+                      genre: Rock and Roll</code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+                </div>
+                <div class="col-lg-6">
+                  <h2>Django ORM</h2>
+                  <pre><code></code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+               </div>
+              </div>
+        
+              <hr>
+              
+<!-- Fixtures query -->
+            <div class="container">
+              <div class="row">
+              <h2>Fixtures</h2>
+                <div class="col-lg-6">
+                  <h2>SQL</h2>
+                  <pre><code># Artist table fixture
+                  B.I.G.:
+                      name: Christopher George Latore Wallace
+                      stage_name: Notorious B.I.G.
+                      genre: Hip hop
+                  
+                  Johnny Cash:
+                      name: John R. Cash
+                      stage_name: Johnny Cash
+                      genre: Country
+                  
+                  Elvis:
+                      name: Elvis Aaron Presley
+                      stage_name: Elvis
+                      genre: Rock and Roll</code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+                </div>
+                <div class="col-lg-6">
+                  <h2>Django ORM</h2>
+                  <pre><code></code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+               </div>
+              </div>
+        
+              <hr>
+              
+<!-- Fixtures query -->
+            <div class="container">
+              <div class="row">
+              <h2>Fixtures</h2>
+                <div class="col-lg-6">
+                  <h2>SQL</h2>
+                  <pre><code># Artist table fixture
+                  B.I.G.:
+                      name: Christopher George Latore Wallace
+                      stage_name: Notorious B.I.G.
+                      genre: Hip hop
+                  
+                  Johnny Cash:
+                      name: John R. Cash
+                      stage_name: Johnny Cash
+                      genre: Country
+                  
+                  Elvis:
+                      name: Elvis Aaron Presley
+                      stage_name: Elvis
+                      genre: Rock and Roll</code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+                </div>
+                <div class="col-lg-6">
+                  <h2>Django ORM</h2>
+                  <pre><code></code></pre>
+                  <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+               </div>
+              </div>
+        
+              <hr>
+
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
+    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src='//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>
